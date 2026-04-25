@@ -211,6 +211,7 @@ body {
   color: #2f2e2e;
   margin: 0;
   margin-bottom: 9px;
+  text-transform: capitalize;
 }
 
 .greeting__descr {
@@ -218,5 +219,76 @@ body {
   font-weight: 200;
   font-size: 32px;
   color: #2f2e2e;
+  margin: 0;
+}
+
+.services {
+  background-color:rgba(37, 77, 77, 0.2);
+  padding: 13px 205px 66px;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  row-gap: 45px;
+}
+
+.services__title {
+  font-family: "PlayfairDisplay";
+  font-weight: 900;
+  font-size: 51px;
+  text-align: center;
+  color: #2f2e2e;
+  grid-area: 1 / 1 / 2 / 4;
+  margin: 0;
+}
+
+.services__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service__icon {
+  display: flex;
+  background-color: #254d4d;
+  border-radius: 100%;
+  width: 103px;
+  height: 103px;
+
+  &::before {
+    content: "";
+    width: 56px;
+    height: 54px;
+    display: block;
+    margin: auto;
+  }
+}
+
+.service__icon_first::before {
+  background: url(../icons/planning.svg) no-repeat center / contain;
+}
+.service__icon_second::before {
+  background: url(../icons/interior.svg) no-repeat center / contain;
+}
+.service__icon_third::before {
+  background: url(../icons/exterior.svg) no-repeat center / contain;
+}
+
+.services__subtitle {
+  font-family: "PlayfairDisplay";
+  font-weight: 900;
+  font-size: 27px;
+  text-align: center;
+  color: #2f2e2e;
+  margin-bottom: 9px;
+}
+
+.services__descr {
+  font-family: "PlayfairDisplay";
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #2f2e2e;
+  max-width: 152px;
   margin: 0;
 }
