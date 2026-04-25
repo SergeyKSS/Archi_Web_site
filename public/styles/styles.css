@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "PlayfairDisplay-Regular";
+  font-family: "PlayfairDisplay";
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/PlayfairDisplay-Regular.ttf") format("woff2");
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: "PlayfairDisplay-Bold";
+  font-family: "PlayfairDisplay";
   font-style: normal;
   font-weight: 700;
   src: url("../fonts/PlayfairDisplay-Bold.ttf") format("woff2");
@@ -15,10 +15,10 @@
 }
 
 @font-face {
-  font-family: "PlayfairDisplay-Black";
+  font-family: "PlayfairDisplay";
   font-style: normal;
   font-weight: 900;
-  src: url("../fonts/Inter_24pt-Black.ttf") format("woff2");
+  src: url("../fonts/PlayfairDisplay-Black.ttf") format("woff2");
   font-display: swap;
 }
 
@@ -58,12 +58,12 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 900;
-  src: url("../fonts/PlayfairDisplay-Black.ttf") format("woff2");
+  src: url("../fonts/Inter_24pt-Black.ttf") format("woff2");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Barlow-SemiBold";
+  font-family: "Barlow";
   font-style: normal;
   font-weight: 600;
   src: url("../fonts/Barlow-SemiBold.ttf") format("woff2");
@@ -93,7 +93,7 @@ html {
 
 body {
   background-color: #fff;
-  font-family: "PlayfairDisplay-Black", sans-serif;
+  font-family: "PlayfairDisplay", sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 51px;
@@ -178,7 +178,6 @@ body {
   text-decoration: none;
   color: #2f2e2e;
   display: block;
-  /* width: 100px; */
 
   &:hover {
     font-weight: 700;
@@ -186,10 +185,38 @@ body {
 }
 
 .greeting {
-  background-image: url(../images/greeting-image.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.greeting__container {
+  width: 100%;
+  max-width: 1150px;
   min-height: 741px;
-  width: 1150px;
-  margin-left: 290px;
+  background: url(../images/greeting-image.png) no-repeat center / cover;
+}
+
+.greeting__rectangle {
+  position: absolute;
+  top: 13%;
+  left: 0px;
+  background: linear-gradient(91deg, rgba(244, 246, 245, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+  max-width: 691px;
+  min-height: 551px;
+  padding: 139px 155px 140px 100px;
+}
+
+.greeting__title {
+  color: #2f2e2e;
+  margin: 0;
+  margin-bottom: 9px;
+}
+
+.greeting__descr {
+  font-family: "Inter", sans-serif;
+  font-weight: 200;
+  font-size: 32px;
+  color: #2f2e2e;
+  margin: 0;
 }
