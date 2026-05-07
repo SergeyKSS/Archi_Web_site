@@ -204,6 +204,10 @@ body {
   }
 }
 
+.nav__link_active {
+  color: red;
+}
+
 .greeting {
   position: relative;
   display: flex;
@@ -378,10 +382,6 @@ body {
   margin: 0;
 }
 
-.projects__item {
-  
-}
-
 .projects__image {
   display: block;
   margin-bottom: 12px;
@@ -533,4 +533,62 @@ body {
 
 .page-footer__location .page-footer__subtitle {
   margin-bottom: 17px;
+}
+
+.main-project {
+  background: url(../images/BG.png) no-repeat center / cover;
+  min-height: 895px;
+  width: 100%;
+}
+
+.login-form {
+  max-width: 360px;
+  margin: 60px auto;
+  padding: 32px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.login-form__title {
+  margin: 0 0 24px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.login-form__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.login-form__input {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.login-form__input:focus {
+  outline: none;
+  border-color: #333333;
+}
+
+.login-form__button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #222222;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.login-form__button:hover {
+  background-color: #000000;
 }
