@@ -1,5 +1,7 @@
-import type { JSX } from "react";
-import Socials from "./socials";
+import type { JSX } from 'react';
+import Socials from './socials';
+import Articles from './articles';
+import mapImage from '../../../public/images/map.png';
 
 function Footer(): JSX.Element {
   return (
@@ -14,26 +16,12 @@ function Footer(): JSX.Element {
       </div>
       <div className="page-footer__articles">
         <h3 className="page-footer__subtitle">Articles</h3>
-        <ul className="page-footer__articles-list">
-          <li className="page-footer__articles-item">
-            <p className="page-footer__article-text">
-              7 Tips for kids friendly interior design
-            </p>
-          </li>
-          <li className="page-footer__item">
-            <p className="page-footer__article-text">
-              Smart tips for changing a room
-            </p>
-          </li>
-          <li className="page-footer__item">
-            <p className="page-footer__article-text">Eco-friendly design</p>
-          </li>
-        </ul>
+          <Articles />
       </div>
       <div className="page-footer__location">
         <h3 className="page-footer__subtitle">Location</h3>
         <img
-          src="../images/map.png"
+          src={mapImage}
           alt="Map showing the office location"
           width={295}
           height={221}

@@ -18,3 +18,9 @@ export const socialsData = [
   {name: 'Twitter', modifier: 'social__link_twitter', href: "twitter.com"},
   {name: 'Instagram', modifier: 'social__link_instagram', href: "instagram.com"},
 ] as const;
+
+export const articleTexts = [
+  '7 Tips for kids friendly interior design',
+  'Smart tips for changing a room',
+  'Eco-friendly design',
+]
