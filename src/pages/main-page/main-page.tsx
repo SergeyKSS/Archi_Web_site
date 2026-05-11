@@ -64,38 +64,7 @@ function MainPage(): JSX.Element {
 
       <section className="testimonials">
         <h2 className="testimonials__title">Testimonial</h2>
-        <ul className="testimonials__list">
-          <li className="testimonials__item">
-            <img
-              src="../images/photo-1.png"
-              alt="photo_1"
-              width={151}
-              height={151}
-              className="testimonials__photo"
-            />
-            <h3 className="testimonials__name">James Passaquindic Arcand</h3>
-            <p className="testimonials__descr">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              <br />
-              aliquam, purus sit amet luctus venenatis
-            </p>
-          </li>
-          <li className="testimonials__item">
-            <img
-              src="../images/photo-2.png"
-              alt="photo_2"
-              width={151}
-              height={151}
-              className="testimonials__photo"
-            />
-            <h3 className="testimonials__name">Abram Schleifer</h3>
-            <p className="testimonials__descr">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              <br />
-              aliquam, purus sit amet luctus venenatis
-            </p>
-          </li>
-        </ul>
+        
       </section>
     </main>
   );
