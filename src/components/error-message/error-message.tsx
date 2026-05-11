@@ -1,0 +1,13 @@
+import {useAppSelector} from '../../hooks';
+import './error-message.css';
+import type { JSX } from 'react';
+
+function ErrorMessage(): JSX.Element | null {
+  const error = useAppSelector((state) => state.error.error);
+
+  return (error)
+    ? <div className='error-message'>{error}</div>
+    : null;
+}
+
+export default ErrorMessage;
