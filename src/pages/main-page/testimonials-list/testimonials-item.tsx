@@ -1,15 +1,15 @@
 import type { JSX } from "react";
-import type { detailedOffer } from "../../../types/detailedOffer";
+import type { DetailedOffer } from "../../../types/detailedOffer";
 
 type TestimonialsItemProps = {
-  review: detailedOffer;
+  review: DetailedOffer;
 }
 
 function TestimonialsItem({review}: TestimonialsItemProps): JSX.Element {
   return (
       <li className="testimonials__item">
         <img
-          src={review.images[0]}
+          src={review.host.avatarUrl}
           alt={review.title}
           width={151}
           height={151}

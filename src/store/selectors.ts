@@ -9,4 +9,11 @@ const selectSlicedOffers = createSelector([
   return slicedOffers;
 });
 
-export {selectSlicedOffers};
+const selectOffersById = createSelector([
+  (state: RootState) => state.currentOfferById.currentOffer,
+],
+(currentOffer) => {
+  return (currentOffer ? [currentOffer, currentOffer] : [])
+});
+
+export {selectSlicedOffers, selectOffersById};

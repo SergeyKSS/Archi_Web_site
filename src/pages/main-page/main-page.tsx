@@ -6,17 +6,32 @@ import { useAppSelector, useAppDispatch } from '../../hooks';
 import { fetchOffersAction } from '../../store/api-actions';
 import { processErrorHandle } from '../../services/process-error-handle';
 import { selectSlicedOffers } from '../../store/selectors';
+import { selectOffersById } from '../../store/selectors';
 import { Helmet } from 'react-helmet-async';
+import TestimonialsList from './testimonials-list/testimonials-list';
+import { fetchOfferByIdAction } from '../../store/api-actions';
 
 function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const shownOffers = useAppSelector((state) => 
     selectSlicedOffers(state)
   );
+  const shownOffersById = useAppSelector((state) => 
+    selectOffersById(state)
+  );
+
 
 
   useEffect(() => {
     dispatch(fetchOffersAction()).then((result) => {
+      if (fetchOffersAction.rejected.match(result)) {
+        processErrorHandle(dispatch, result.payload ?? 'Unknown error');
+      }
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchOfferByIdAction("4bcdf41a-7b7a-4af8-ac9d-eba6289c3d30")).then((result) => {
       if (fetchOffersAction.rejected.match(result)) {
         processErrorHandle(dispatch, result.payload ?? 'Unknown error');
       }
@@ -64,7 +79,7 @@ function MainPage(): JSX.Element {
 
       <section className="testimonials">
         <h2 className="testimonials__title">Testimonial</h2>
-        
+        <TestimonialsList reviews={shownOffersById}/>
       </section>
     </main>
   );

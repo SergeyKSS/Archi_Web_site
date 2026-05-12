@@ -1,4 +1,4 @@
-export type detailedOffer = {
+export type DetailedOffer = {
   id: string;
   title: string;
   type: string;

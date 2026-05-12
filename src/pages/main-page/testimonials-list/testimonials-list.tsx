@@ -1,15 +1,17 @@
 import type { JSX } from "react";
 import TestimonialsItem from "./testimonials-item";
-import type { detailedOffer } from "../../../types/detailedOffer";
+import type { DetailedOffer } from "../../../types/detailedOffer";
 
 type TestimanialsListProps = {
-  review: detailedOffer;
+  reviews: DetailedOffer[];
 }
 
-function TestimonialsList({review}: TestimanialsListProps): JSX.Element {
+function TestimonialsList({reviews}: TestimanialsListProps): JSX.Element {
   return (
     <ul className="testimonials__list">
-      <TestimonialsItem review={review}/>
+      {reviews.map((review) => (
+        <TestimonialsItem review={review}/>
+      ))}
     </ul>
   );
 }
