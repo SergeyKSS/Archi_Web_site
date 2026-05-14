@@ -1,41 +1,43 @@
-import type { JSX } from 'react';
-import Services from './services/services';
-import Projects from './projects/projects';
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { fetchOffersAction } from '../../store/api-actions';
-import { processErrorHandle } from '../../services/process-error-handle';
-import { selectSlicedOffers } from '../../store/selectors';
-import { selectOffersById } from '../../store/selectors';
-import { Helmet } from 'react-helmet-async';
-import TestimonialsList from './testimonials-list/testimonials-list';
-import { fetchOfferByIdAction } from '../../store/api-actions';
+import type { JSX } from "react";
+import Services from "./services/services";
+import Projects from "./projects/projects";
+import { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { fetchOffersAction } from "../../store/api-actions";
+import { processErrorHandle } from "../../services/process-error-handle";
+import { selectSlicedOffers } from "../../store/selectors";
+import { selectOffersById } from "../../store/selectors";
+import { Helmet } from "react-helmet-async";
+import TestimonialsList from "./testimonials-list/testimonials-list";
+import { fetchOfferByIdAction } from "../../store/api-actions";
+import { AuthorizationStatus } from "../../const/const";
 
-function MainPage(): JSX.Element {
+type MainPageProps = {
+  authorizationStatus: AuthorizationStatus;
+}
+
+function MainPage({authorizationStatus}: MainPageProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const shownOffers = useAppSelector((state) => 
-    selectSlicedOffers(state)
-  );
-  const shownOffersById = useAppSelector((state) => 
-    selectOffersById(state)
-  );
-
-
+  const shownOffers = useAppSelector((state) => selectSlicedOffers(state));
+  const shownOffersById = useAppSelector((state) => selectOffersById(state));
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   useEffect(() => {
     dispatch(fetchOffersAction()).then((result) => {
       if (fetchOffersAction.rejected.match(result)) {
-        processErrorHandle(dispatch, result.payload ?? 'Unknown error');
+        processErrorHandle(dispatch, result.payload ?? "Unknown error");
       }
     });
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchOfferByIdAction("4bcdf41a-7b7a-4af8-ac9d-eba6289c3d30")).then((result) => {
-      if (fetchOffersAction.rejected.match(result)) {
-        processErrorHandle(dispatch, result.payload ?? 'Unknown error');
-      }
-    });
+    dispatch(fetchOfferByIdAction("997ff571-bf2f-45f1-83f8-9c6030030156")).then(
+      (result) => {
+        if (fetchOfferByIdAction.rejected.match(result)) {
+          processErrorHandle(dispatch, result.payload ?? "Unknown error");
+        }
+      },
+    );
   }, [dispatch]);
 
   return (
@@ -72,15 +74,19 @@ function MainPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="projects">
-        <h2 className="projects-title">Our projects</h2>
-        <Projects offers={shownOffers}/>
-      </section>
+      {isAuth && (
+        <>
+          <section className="projects">
+            <h2 className="projects-title">Our projects</h2>
+            <Projects offers={shownOffers} />
+          </section>
 
-      <section className="testimonials">
-        <h2 className="testimonials__title">Testimonial</h2>
-        <TestimonialsList reviews={shownOffersById}/>
-      </section>
+          <section className="testimonials">
+            <h2 className="testimonials__title">Testimonial</h2>
+            <TestimonialsList reviews={shownOffersById} />
+          </section>
+        </>
+      )}
     </main>
   );
 }

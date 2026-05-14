@@ -1,7 +1,6 @@
 import type { JSX } from 'react';
 import Socials from './socials';
 import Articles from './articles';
-import mapImage from '../../../public/images/map.png';
 
 function Footer(): JSX.Element {
   return (
@@ -21,7 +20,7 @@ function Footer(): JSX.Element {
       <div className="page-footer__location">
         <h3 className="page-footer__subtitle">Location</h3>
         <img
-          src={mapImage}
+          src='/images/map.png'
           alt="Map showing the office location"
           width={295}
           height={221}

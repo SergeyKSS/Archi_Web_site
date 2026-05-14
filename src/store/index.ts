@@ -3,11 +3,13 @@ import { createAPI } from "../services/api";
 import { offersReducer } from "./offers/offers-slice";
 import { errorReducer } from "./error/error-slice";
 import { currentOfferReducer } from "./detailed-offer";
+import { userReducer } from "./user-slice/user-slice";
 
 export const rootReducer = combineReducers({
   offers: offersReducer,
   error: errorReducer,
   currentOfferById: currentOfferReducer,
+  user: userReducer,
 });
 
 export const api = createAPI();

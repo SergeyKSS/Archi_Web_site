@@ -8,13 +8,13 @@ export const AppRoute = {
 
 export const APIRoute = {
   Offers: '/offers',
-  Login: '.login',
+  Login: '/login',
+  Logout: '/logout',
 }
 
 export const NavItems = [
   { label: "Home", to: AppRoute.Root },
   { label: "Project", to: AppRoute.Project },
-  { label: "Login", to: AppRoute.Login },
   { label: "Contacts", to: AppRoute.Contacts },
 ] as const;
 
@@ -62,5 +62,11 @@ export const services = [
     id: "03",
   },
 ] as const;
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
 
 export const TIMEOUT_SHOW_ERROR = 2000;

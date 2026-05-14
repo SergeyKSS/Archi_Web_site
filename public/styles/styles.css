@@ -184,10 +184,7 @@ body {
     width: 66px;
   }
   &:nth-child(3) {
-    width: 56px;
-  }
-  &:nth-child(4) {
-    width: 74px;
+    width: 84px;
   }
 }
 
@@ -205,6 +202,28 @@ body {
 }
 
 .nav__link_active {
+  color: red;
+}
+
+.nav__auth {
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  color: #2f2e2e;
+  display: block;
+
+  &:hover {
+    font-weight: 700;
+  }
+}
+
+.nav__auth-wrapper {
+  width: 54px;
+  margin-left: 105px;
+}
+
+.nav__auth_active {
   color: red;
 }
 
