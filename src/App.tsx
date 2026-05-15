@@ -6,10 +6,10 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/layout";
 import ProjectPage from "./pages/project-page/project-page";
 import LoginPage from "./pages/login/login-page";
-import { AuthorizationStatus } from "./const/const";
+import { useAppSelector } from "./hooks";
 
 function App(): JSX.Element {
-  const authorizationStatus = AuthorizationStatus.Auth;
+  const authorizationStatus = useAppSelector((state) => state.user.authorizationStatus);
 
   return (
     <HelmetProvider>
