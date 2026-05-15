@@ -91,6 +91,17 @@ ul {
   list-style-type: none;
 }
 
+button {
+  border: none;
+  background: none;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --font-family: "PlayfairDisplay", sans-serif;
   --second-family: "Inter", sans-serif;
@@ -611,6 +622,11 @@ body {
   cursor: pointer;
 }
 
-.login-form__button:hover {
+.login-form__button:not(:disabled):hover {
   background-color: #000000;
+}
+
+.login-form__button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }

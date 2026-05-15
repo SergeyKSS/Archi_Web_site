@@ -10,12 +10,15 @@ function LoginPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const authorizationStatus = useAppSelector((state) => state.user.authorizationStatus);
-  const isValidPassword = (password: string): boolean => 
+  const authorizationStatus = useAppSelector(
+    (state) => state.user.authorizationStatus,
+  );
+  const isLoginLoading = useAppSelector((state) => state.user.isLoginLoading);
+  const isValidPassword = (password: string): boolean =>
     /^(?=.*[A-Za-z])(?=.*\d).+$/.test(password);
 
   if (authorizationStatus === AuthorizationStatus.Auth) {
-    return <Navigate to={AppRoute.Root} />
+    return <Navigate to={AppRoute.Root} />;
   }
 
   const handleSubmit = (evt: SubmitEvent<HTMLFormElement>) => {
@@ -23,21 +26,24 @@ function LoginPage(): JSX.Element {
 
     if (loginRef.current !== null && passwordRef.current !== null) {
       const email = loginRef.current.value;
-      const password = loginRef.current.value;
+      const password = passwordRef.current.value;
 
       if (!password) {
-        processErrorHandle(dispatch, 'Password must not be empty');
+        processErrorHandle(dispatch, "Password must not be empty");
         return;
       }
 
       if (!isValidPassword(password)) {
-        processErrorHandle(dispatch, 'Password must contain at least one letter and one number');
+        processErrorHandle(
+          dispatch,
+          "Password must contain at least one letter and one number",
+        );
         return;
       }
 
-      dispatch(loginAction({login: email, password})).then((result) => {
+      dispatch(loginAction({ login: email, password })).then((result) => {
         if (loginAction.rejected.match(result)) {
-          processErrorHandle(dispatch, result.payload ?? 'Unknown error');
+          processErrorHandle(dispatch, result.payload ?? "Unknown error");
         }
       });
     }
@@ -45,33 +51,42 @@ function LoginPage(): JSX.Element {
 
   return (
     <main>
-      <form className="login-form" action="#" method="post" onSubmit={handleSubmit}>
+      <form
+        className="login-form"
+        action="#"
+        method="post"
+        onSubmit={handleSubmit}
+        aria-disabled={isLoginLoading}
+      >
         <h1 className="login-form__title">Login</h1>
         <label className="login-form__label" htmlFor="email">
           Email
         </label>
-        <input
-          className="login-form__input"
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
-        <label className="login-form__label" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="login-form__input"
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
-        <button className="login-form__button" type="submit">
-          Sign in
-        </button>
+        <fieldset disabled={isLoginLoading}>
+          <input
+            className="login-form__input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            ref={loginRef}
+          />
+          <label className="login-form__label" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="login-form__input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            ref={passwordRef}
+          />
+          <button className="login-form__button" type="submit">
+            {isLoginLoading ? 'Logging in...' : 'Login'}
+          </button>
+        </fieldset>
       </form>
     </main>
   );

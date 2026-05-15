@@ -31,7 +31,7 @@ function MainPage({authorizationStatus}: MainPageProps): JSX.Element {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchOfferByIdAction("997ff571-bf2f-45f1-83f8-9c6030030156")).then(
+    dispatch(fetchOfferByIdAction("e367a06f-4cba-4128-ab4d-f1ebe39670ab")).then(
       (result) => {
         if (fetchOfferByIdAction.rejected.match(result)) {
           processErrorHandle(dispatch, result.payload ?? "Unknown error");

@@ -3,7 +3,7 @@ import { Link, NavLink }  from 'react-router-dom';
 import NavigationList from './navigation-list';
 import { AppRoute } from '../../const/const';
 import { AuthorizationStatus } from '../../const/const';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { processErrorHandle } from '../../services/process-error-handle';
 
@@ -13,6 +13,7 @@ type HeaderProps = {
 
 function Header({authorizationStatus}: HeaderProps): JSX.Element {
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
+  const isLoginLoading = useAppSelector((state) => state.user.isLoginLoading);
   const dispatch = useAppDispatch();
 
   const hanldeLogoutClick = () => {
@@ -32,13 +33,14 @@ function Header({authorizationStatus}: HeaderProps): JSX.Element {
         <NavigationList />
         <div className="nav__auth-wrapper">
           {isAuth ? (
-          <NavLink 
-            className={({isActive}) => isActive ? 'nav__auth nav__auth_active' : 'nav__auth'}
-            to={AppRoute.Root}
+          <button 
+            type="button"
+            className='nav__auth'
             onClick={hanldeLogoutClick}
+            disabled={isLoginLoading}
           >
             Logout
-          </NavLink>
+          </button>
           ) : (
             <NavLink 
             className={({isActive}) => isActive ? 'nav__auth nav__auth_active' : 'nav__auth'}
